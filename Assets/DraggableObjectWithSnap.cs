@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class DraggableObjectWithSnap : MonoBehaviour
 {
-    private bool isDragging = false;
+    public bool isDragging = false;
     private Vector3 offset;
-    private bool isSnapped = false;
+    public bool isSnapped = false;
     public Transform snapTarget;
 
     private void OnMouseDown()
@@ -37,7 +37,11 @@ public class DraggableObjectWithSnap : MonoBehaviour
     {
         // Check for a snap target when the object enters a trigger collider
         Debug.Log(other.name);
-        snapTarget = other.transform;
+        if (other.name!= "Card")
+        {
+            snapTarget = other.transform;
+        }
+
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -48,12 +52,16 @@ public class DraggableObjectWithSnap : MonoBehaviour
 
     private void Update()
     {
-        if (isDragging && snapTarget != null && !isSnapped)
+        if (isDragging != true && snapTarget != null && !isSnapped)
         {
             // Snap the object to the snap target
             transform.position = snapTarget.position;
-            transform.SetParent(snapTarget);
+
+           // transform.SetParent(snapTarget);
             isSnapped = true;
+        }
+        else { 
+        
         }
     }
 
