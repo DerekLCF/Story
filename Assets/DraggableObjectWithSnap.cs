@@ -35,7 +35,6 @@ public class DraggableObjectWithSnap : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Check for a snap target when the object enters a trigger collider
         Debug.Log(other.name);
         if (other.name!= "Card")
         {
@@ -46,7 +45,6 @@ public class DraggableObjectWithSnap : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        // Clear the snap target when the object exits a trigger collider
         snapTarget = null;
     }
 
@@ -54,10 +52,7 @@ public class DraggableObjectWithSnap : MonoBehaviour
     {
         if (isDragging != true && snapTarget != null && !isSnapped)
         {
-            // Snap the object to the snap target
             transform.position = snapTarget.position;
-
-           // transform.SetParent(snapTarget);
             isSnapped = true;
         }
         else { 

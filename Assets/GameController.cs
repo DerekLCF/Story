@@ -14,13 +14,32 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Card_Position[0].position = Place_Position[0].position;
-
+        SetOrgPosition();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    void SetOrgPosition()
+    {
+        int i = 0;
+        foreach (Transform x in Org_Position) {
+            Card_Position[i].position = x.position;
+            i++;
+        }
+    }
+
+
+     public void SetPosition()
+    {
+        int i = 0;
+        foreach (Transform x in Org_Position)
+        {
+            Card_Position[i].position = x.position;
+            i++;
+        }
     }
 }
