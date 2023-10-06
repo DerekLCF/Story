@@ -32,6 +32,19 @@ public class Draggable : MonoBehaviour,IBeginDragHandler,IDragHandler, IEndDragH
         image.raycastTarget = true;
         GameController.CheckWin();
     }
+    public void SetPosition()
+    {
+
+        if (parentAfterDrag.TryGetComponent(out Slot slot))
+        {
+            transform.SetParent(parentAfterDrag);
+        }
+        else {
+            transform.SetParent(ORG_Parent);
+        }
+  
+        GameController.CheckWin();
+    }
 
     public void OnPointerClick(PointerEventData eventData)
     {
